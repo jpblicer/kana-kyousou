@@ -10,12 +10,34 @@
 
 require 'json'
 
-# Load and parse the JSON file
-file = File.read(Rails.root.join('db', 'fixtures', 'filename.json'))
-data = JSON.parse(file)
+puts "clean up db"
+Hiragana.destroy_all
+Katakana.destroy_all
 
-# Example of processing the data
-data.each do |item|
-  # Assuming item is a hash with the appropriate keys
-  YourModel.create!(item)
+puts "Load and parse the Hiragana JSON file"
+hiragana_file = File.read('db/kana/hiragana.json')
+hiragana_data = JSON.parse(hiragana_file)
+
+puts "Adding the Hiragana"
+hiragana_data.each do |kana|
+  Hiragana.create!(
+    kana: kana["kana"],
+    romaji: kana["roumaji"]
+  )
 end
+puts "Hiragana Added"
+
+puts "Load and parse the Katakana JSON file"
+katakana_file = File.read('db/kana/katakana.json')
+katakana_data = JSON.parse(katakana_file)
+
+puts "Adding the Katakana"
+katakana_data.each do |kana|
+  Katakana.create!(
+    kana: kana["kana"],
+    romaji: kana["roumaji"]
+  )
+end
+puts "Katakana Added"
+
+puts "All Kana Added"
