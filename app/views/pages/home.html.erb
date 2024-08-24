@@ -1,8 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<%= @random_hiragana.kana %>
-
-<% @possible_answers.each do |answer| %>
-<%= answer.romaji %>
-<% end %>
+<div class="container">
+  <h1>Flashcard</h1>
+  <div class="main-card-container row justify-content-center">
+    <div class="main-card card col-2 my-5 p-4 border-4 border-dark">
+      <h2 class="d-flex align-items-center justify-content-center"><%= @random_hiragana.kana %></h2>
+    </div>
+  </div>
+    <div class="answers-container row justify-content-around align-items-center">
+    <% @possible_answers.each do |answer| %>
+      <div class="answer card col-2 text-center border-3 border-dark my-5 p-4">
+        <h4 class="d-flex align-items-center justify-content-center"><%= answer.romaji %></h4>
+      </div>
+    <% end %>
+  </div>
+</div>
