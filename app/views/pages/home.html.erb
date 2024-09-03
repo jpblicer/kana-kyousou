@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Flashcard</h1>
   <div data-controller="flashcards" class="flashcards-container">
-    <div class="main-card-container row justify-content-center">
+    <div data-flashcards-target="maincard" class="main-card-container row justify-content-center">
       <div class="main-card card col-2 my-5 p-4 border-4 border-dark">
         <h2 class="d-flex align-items-center justify-content-center"><%= @random_hiragana.kana %></h2>
       </div>
@@ -10,7 +10,7 @@
       <% @possible_answers.each do |answer| %>
         <div class="answer card col-2 text-center border-3 border-dark my-5 p-4"
         data-action="click->flashcards#checkAnswer">
-          <h4 data-flashcards-target="flashcard" type="text" class="d-flex align-items-center justify-content-center"><%= answer.romaji %></h4>
+          <h4 class="d-flex align-items-center justify-content-center"><%= answer.romaji %></h4>
         </div>
       <% end %>
     </div>

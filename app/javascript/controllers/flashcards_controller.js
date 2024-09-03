@@ -2,13 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="flashcards"
 export default class extends Controller {
-  static targets = [ "flashcard" ]
+  static targets = [ "maincard" ]
 
   connect() {
     console.log("Flashcard Controller connected")
   }
 
-  checkAnswer() {
-    console.log("Click Test")
+  checkAnswer(event) {
+    const element = event.currentTarget.innerText
+    console.log(`${element}`)
+    console.log(this.maincardTarget)
   }
 }
